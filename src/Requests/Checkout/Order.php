@@ -42,6 +42,14 @@ class Order
     private $reference;
 
     /**
+     * @Serializer\XmlElement(cdata=true)
+     * @Serializer\Type("boolean")
+     *
+     * @var bool
+     */
+    private $shippingAddressRequired;
+
+    /**
      * @Serializer\Type("PHPSC\PagSeguro\Shipping\Shipping")
      *
      * @var Shipping
@@ -94,6 +102,22 @@ class Order
     public function setReference($reference)
     {
         $this->reference = $reference;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isShippingAddressRequired()
+    {
+        return $this->shippingAddressRequired;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function notRequireShippingAddress()
+    {
+        $this->shippingAddressRequired = false;
     }
 
     /**

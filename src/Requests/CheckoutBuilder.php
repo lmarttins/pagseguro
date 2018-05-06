@@ -33,6 +33,11 @@ interface CheckoutBuilder
     public function setReference($reference);
 
     /**
+     * @return self
+     */
+    public function notRequireShippingAddress();
+
+    /**
      * @param Customer $customer
      *
      * @return self
